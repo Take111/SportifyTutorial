@@ -51,6 +51,7 @@
 		CF8B72A62418631E00B5348E /* SpotifyTurtorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTurtorialUITests.swift; sourceTree = "<group>"; };
 		CF8B72A82418631E00B5348E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8B72B42418634E00B5348E /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		CFDA2BED2419237D00769AFE /* SpotifyTutorial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyTutorial-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 		CF8B72782418631B00B5348E = {
 			isa = PBXGroup;
 			children = (
+				CFDA2BED2419237D00769AFE /* SpotifyTutorial-Bridging-Header.h */,
 				CF8B72832418631B00B5348E /* SpotifyTurtorial */,
 				CF8B729A2418631E00B5348E /* SpotifyTurtorialTests */,
 				CF8B72A52418631E00B5348E /* SpotifyTurtorialUITests */,
@@ -378,7 +380,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyTurtorial-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyTutorial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -432,7 +434,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyTurtorial-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyTutorial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
