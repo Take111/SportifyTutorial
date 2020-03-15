@@ -13,8 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     var window: UIWindow?
     
     static private let kAccessTokenKey = "access-token-key"
-    private let clientID = "ff04f43449bb427db274d376d5565cfd"
-    private let redirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")!
+    private let clientID = "fb90177288a6425291fec90114e2fd0b"
+    private let redirectURL = URL(string: "ChikatoTakenouchi.SpotifyTurtorial://SpotifyAuthentication")!
     
     lazy var appRemote: SPTAppRemote = {
         let configuration = SPTConfiguration(clientID: clientID, redirectURL: redirectURL)
@@ -28,10 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
         didSet {
             let defaults = UserDefaults.standard
             defaults.set(accessToken, forKey: SceneDelegate.kAccessTokenKey)
+            print("SceneDelegate: accessToken: \(accessToken)")
         }
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        print("SceneDelegate: openURLContexts is called")
         guard let url = URLContexts.first?.url else {
             return
         }
@@ -41,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
         if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
             appRemote.connectionParameters.accessToken = access_token
             self.accessToken = access_token
+            print("SceneDelegate: openURLContexts: \(accessToken)")
         }
         else if let errorDescription = parameters?[SPTAppRemoteErrorDescriptionKey] {
             print("SceneDelegate: errorDescription has error: \(errorDescription)")

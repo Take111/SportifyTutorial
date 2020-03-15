@@ -12,6 +12,10 @@ class ViewController: UIViewController {
 
     let buttonSize = CGSize(width: 100, height: 20)
     
+    private let playURI = "spotify:album:1htHMnxonxmyHdKE2uDFMR"
+    private let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
+    
+    
     var appRemote: SPTAppRemote? {
         get {
             return (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.appRemote
@@ -26,6 +30,7 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         view.addSubview(authButton)
+        
     }
 
     // MARK: - Layout
@@ -44,7 +49,20 @@ class ViewController: UIViewController {
     // MARK: - Action
     
     @objc func auth() {
-        
+        if appRemote?.isConnected == false && appRemote?.playerAPI != nil {
+            print("ViewController: appRemote.is not Connected")
+            if appRemote?.authorizeAndPlayURI(trackIdentifier, asRadio: true) == false {
+                print("ViewController: appRemote?.authorizeAndPlayURI is false")
+            }
+            else {
+                print("ViewController: appRemote?.authorizeAndPlayURI is true")
+                print("ViewController: appRemote: \(appRemote?.isConnected)")
+            }
+        }
+        else {
+            print("ViewController: appRemote?.isConnected == false: \(appRemote?.isConnected) && appRemote?.playerAPI != nil: \(appRemote?.playerAPI)")
+            print("ViewController: appRemote?.isConnected == false && appRemote?.playerAPI != nil: appRemote: \(appRemote?.isConnected)")
+        }
     }
     
     

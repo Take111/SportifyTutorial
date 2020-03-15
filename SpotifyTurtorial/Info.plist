@@ -19,11 +19,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.spotify.iOS-SDK-Quick-Start</string>
+			<string>ChikatoTakenouchi.SpotifyTurtorial</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>spotify-ios-quick-start</string>
+				<string>ChikatoTakenouchi.SpotifyTurtorial://SpotifyAuthentication</string>
 			</array>
 		</dict>
 	</array>
