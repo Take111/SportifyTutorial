@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     
     static private let kAccessTokenKey = "access-token-key"
     private let clientID = "fb90177288a6425291fec90114e2fd0b"
-    private let redirectURL = URL(string: "ChikatoTakenouchi.SpotifyTurtorial://spotify/callback")!
+    private let redirectURL = URL(string: "SpotifyTurtorial://spotify/callback")!
     
     lazy var appRemote: SPTAppRemote = {
         let configuration = SPTConfiguration(clientID: clientID, redirectURL: redirectURL)

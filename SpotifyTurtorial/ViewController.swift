@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class ViewController: UIViewController {
 
@@ -49,9 +50,10 @@ class ViewController: UIViewController {
     // MARK: - Action
     
     @objc func auth() {
-        if appRemote?.isConnected == false && appRemote?.playerAPI != nil {
+        if appRemote?.isConnected == false  {
             print("ViewController: appRemote.is not Connected")
             if appRemote?.authorizeAndPlayURI(trackIdentifier, asRadio: true) == false {
+                showAppStroreInstall()
                 print("ViewController: appRemote?.authorizeAndPlayURI is false")
             }
             else {
@@ -77,3 +79,23 @@ class ViewController: UIViewController {
     }()
 }
 
+extension ViewController: SKStoreProductViewControllerDelegate {
+    private func showAppStroreInstall() {
+        let loadingView = UIActivityIndicatorView(frame: view.bounds)
+        view.addSubview(loadingView)
+        loadingView.startAnimating()
+        loadingView.backgroundColor = UIColor.white
+        let storeProductViewController = SKStoreProductViewController()
+        storeProductViewController.delegate = self
+        storeProductViewController.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: SPTAppRemote.spotifyItunesItemIdentifier()]) { (success, error) in
+            loadingView.removeFromSuperview()
+            if let error = error {
+                print("ViewController: extension: showAppStroreInstall loadProduct is error")
+            }
+            else {
+                print("ViewController: extension: showAppStroreInstall success")
+                self.present(storeProductViewController, animated: true, completion: nil)
+            }
+        }
+    }
+}
