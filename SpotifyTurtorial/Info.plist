@@ -25,7 +25,7 @@
 			<string>ChikatoTakenouchi.SpotifyTurtorial</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ChikatoTakenouchi.SpotifyTurtorial://SpotifyAuthentication</string>
+				<string>SpotifyTurtorial</string>
 			</array>
 		</dict>
 	</array>

@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     
     static private let kAccessTokenKey = "access-token-key"
     private let clientID = "fb90177288a6425291fec90114e2fd0b"
-    private let redirectURL = URL(string: "ChikatoTakenouchi.SpotifyTurtorial://SpotifyAuthentication")!
+    private let redirectURL = URL(string: "ChikatoTakenouchi.SpotifyTurtorial://spotify/callback")!
     
     lazy var appRemote: SPTAppRemote = {
         let configuration = SPTConfiguration(clientID: clientID, redirectURL: redirectURL)
@@ -56,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        print("SceneDelegate: connect disconect")
+        print("SceneDelegate: connect /Users/takenouchiaito/Projects/Training/SpotifyTurtorial/SpotifyTurtorial/SceneDelegate.swiftdisconect")
         appRemote.disconnect()
     }
     
