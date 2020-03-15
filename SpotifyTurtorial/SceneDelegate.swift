@@ -31,7 +31,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
             print("SceneDelegate: accessToken: \(accessToken)")
         }
     }
-    
+//
+//    var viewControlelr: ViewController {
+//        get {
+//            let navController = self.window?.rootViewController?.children[0] as? UINavigationController
+//            return navController?.topViewController as! ViewController
+//        }
+//    }
+
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         print("SceneDelegate: openURLContexts is called")
         guard let url = URLContexts.first?.url else {
@@ -43,7 +50,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
         if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
             appRemote.connectionParameters.accessToken = access_token
             self.accessToken = access_token
-            print("SceneDelegate: openURLContexts: \(accessToken)")
         }
         else if let errorDescription = parameters?[SPTAppRemoteErrorDescriptionKey] {
             print("SceneDelegate: errorDescription has error: \(errorDescription)")
@@ -67,6 +73,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         self.appRemote = appRemote
+        if let viewController = window?.rootViewController as? ViewController {
+            viewController.appRemoteConnected()
+        }
         print("SceneDelegate: appRemote The transport that has connected.")
     }
     
