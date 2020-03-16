@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     
     static private let kAccessTokenKey = "access-token-key"
     private let clientID = "fb90177288a6425291fec90114e2fd0b"
-    private let redirectURL = URL(string: "SpotifyTurtorial://spotify/callback")!
+    private let redirectURL = URL(string: "SpotifyTutorial://spotify/callback")!
     
     lazy var appRemote: SPTAppRemote = {
         let configuration = SPTConfiguration(clientID: clientID, redirectURL: redirectURL)
@@ -31,19 +31,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
             print("SceneDelegate: accessToken: \(accessToken)")
         }
     }
-//
-//    var viewControlelr: ViewController {
-//        get {
-//            let navController = self.window?.rootViewController?.children[0] as? UINavigationController
-//            return navController?.topViewController as! ViewController
-//        }
-//    }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         print("SceneDelegate: openURLContexts is called")
         guard let url = URLContexts.first?.url else {
             return
         }
+        print("SceneDelegate: openURLContexts url: \(url)")
         // authoricationParameters()これがAccessTokenかエラーを返す
         let parameters = appRemote.authorizationParameters(from: url)
         
@@ -58,17 +52,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
     
     func sceneDidBecomeActive(_ scene: UIScene) {
         print("SceneDelegate: sceneDidBecomeActive")
-        connect()
+        appRemote.connect()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        print("SceneDelegate: connect /Users/takenouchiaito/Projects/Training/SpotifyTurtorial/SpotifyTurtorial/SceneDelegate.swiftdisconect")
+        print("SceneDelegate: sceneWillResignActive")
         appRemote.disconnect()
-    }
-    
-    func connect() {
-        print("SceneDelegate: connect called")
-        appRemote.connect()
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {

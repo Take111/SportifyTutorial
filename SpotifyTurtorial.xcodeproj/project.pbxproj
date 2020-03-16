@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CF8B72812418631B00B5348E /* SpotifyTurtorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyTurtorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8B72812418631B00B5348E /* SpotifyTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8B72842418631B00B5348E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8B72862418631B00B5348E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CF8B72882418631B00B5348E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		CF8B72822418631B00B5348E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF8B72812418631B00B5348E /* SpotifyTurtorial.app */,
+				CF8B72812418631B00B5348E /* SpotifyTutorial.app */,
 				CF8B72972418631E00B5348E /* SpotifyTurtorialTests.xctest */,
 				CF8B72A22418631E00B5348E /* SpotifyTurtorialUITests.xctest */,
 			);
@@ -151,7 +151,7 @@
 			);
 			name = SpotifyTurtorial;
 			productName = SpotifyTurtorial;
-			productReference = CF8B72812418631B00B5348E /* SpotifyTurtorial.app */;
+			productReference = CF8B72812418631B00B5348E /* SpotifyTutorial.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CF8B72962418631E00B5348E /* SpotifyTurtorialTests */ = {
@@ -447,8 +447,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ChikatoTakenouchi.SpotifyTurtorial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ChikatoTakenouchi.SpotifyTutorial;
+				PRODUCT_NAME = SpotifyTutorial;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -469,8 +469,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ChikatoTakenouchi.SpotifyTurtorial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ChikatoTakenouchi.SpotifyTutorial;
+				PRODUCT_NAME = SpotifyTutorial;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

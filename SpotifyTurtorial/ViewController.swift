@@ -20,9 +20,8 @@ class ViewController: UIViewController {
     let buttonSize = CGSize(width: 20, height: 20)
     let imageSize = CGSize(width: 200, height: 200)
     let playerButtonSize = CGSize(width: 60, height: 60)
-    
-    private let playURI = "spotify:album:1htHMnxonxmyHdKE2uDFMR"
-    private let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
+
+    private let trackIdentifier = ""
     
     var status: Status = .disconnected {
         didSet {
@@ -78,7 +77,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subsripbePlayerState()
+        subscribePlayerState()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,7 +112,8 @@ class ViewController: UIViewController {
         songTitleLabel.frame.origin.x = (w - songTitleLabel.frame.size.width) / 2
         songTitleLabel.frame.origin.y = artistNameLabel.frame.maxY + CGFloat(50)
         
-        songNameLabel.frame.size = songNameLabel.sizeThatFits(.zero)
+        songNameLabel.frame.size.width = w - CGFloat(10) * 2
+        songNameLabel.frame.size.height = songNameLabel.sizeThatFits(songNameLabel.frame.size).height
         songNameLabel.frame.origin.x = (w - songNameLabel.frame.size.width) / 2
         songNameLabel.frame.origin.y = songTitleLabel.frame.maxY + CGFloat(10)
         
@@ -166,7 +166,7 @@ class ViewController: UIViewController {
         status = .connected
         appRemote?.playerAPI?.delegate = self
         
-        subsripbePlayerState()
+        subscribePlayerState()
         fetchPlayerState()
     }
     
@@ -192,22 +192,22 @@ class ViewController: UIViewController {
         changeSongStatus()
     }
     
-    // MARK: - Action Spotify Fetch & Subsribe
+    // MARK: - Action Spotify Auth, Fetch & Subsribe
     
     @objc func auth() {
         if appRemote?.isConnected == false  {
             print("ViewController: appRemote.is not Connected")
+            // authorizeAndPlayURIでSpotifyが端末にインストールされているか認証の取得ができるかを試す
             if appRemote?.authorizeAndPlayURI(trackIdentifier, asRadio: true) == false {
+                // Spotifyがインストールされていないときは、インストール画面を出す
                 showAppStroreInstall()
-                print("ViewController: appRemote?.authorizeAndPlayURI is false")
             }
             else {
-                print("ViewController: appRemote?.authorizeAndPlayURI is true")
                 print("ViewController: appRemote: \(appRemote?.isConnected)")
             }
         }
         else {
-            print("ViewController: appRemote?.isConnected == false: \(appRemote?.isConnected) && appRemote?.playerAPI != nil: \(appRemote?.playerAPI)")
+            print("ViewController: appRemote?.isConnected == false: && appRemote?.playerAPI != nil")
         }
     }
     
@@ -243,7 +243,7 @@ class ViewController: UIViewController {
         })
     }
     
-    func subsripbePlayerState() {
+    func subscribePlayerState() {
         appRemote?.playerAPI?.subscribe(toPlayerState: defaultCallBack)
     }
     
@@ -282,6 +282,8 @@ class ViewController: UIViewController {
         let v = UILabel()
         v.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         v.textColor = .black
+        v.textAlignment = .center
+        v.numberOfLines = 2
         return v
     }()
     
@@ -297,6 +299,7 @@ class ViewController: UIViewController {
         let v = UILabel()
         v.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         v.textColor = .black
+        v.textAlignment = .center
         v.numberOfLines = 2
         return v
     }()
