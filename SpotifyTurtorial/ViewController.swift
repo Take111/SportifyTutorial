@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     var defaultCallBack: SPTAppRemoteCallback {
         get {
-            return {[weak self] _, error in
+            return { _, error in
                 if let error = error {
                     print("ViewController: defaultCallBack has error: \(error)")
                 }
@@ -212,7 +212,10 @@ class ViewController: UIViewController {
     }
     
     func fetchPlayerState() {
-        appRemote?.playerAPI?.getPlayerState({ (result, error) in
+        appRemote?.playerAPI?.getPlayerState({ [weak self] (result, error) in
+            guard let self = self else {
+                return
+            }
             if let error = error {
                 print("ViewController: fetchPlayerState is failure: error: \(error)")
             }

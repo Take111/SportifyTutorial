@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate{
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate {
     
     var window: UIWindow?
     
